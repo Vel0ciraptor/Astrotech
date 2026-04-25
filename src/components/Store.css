@@ -1,0 +1,145 @@
+/* ═══ Store Section ═══ */
+.store {
+  position: relative;
+  overflow: hidden;
+}
+
+.store .section-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.store .section-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    url('/assets/Liquid_glass_background_202604222022.webp') center/cover no-repeat;
+  opacity: 0.5;
+  filter: blur(20px) brightness(0.4);
+}
+
+.store .section-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 60%);
+  filter: blur(100px);
+  top: -250px;
+  right: -150px;
+  animation: storeGlow 9s ease-in-out infinite;
+}
+
+@keyframes storeGlow {
+
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.25;
+    transform: scale(1.1) rotate(30deg);
+  }
+}
+
+/* ═══ Filter Buttons - Liquid Glass Pills ═══ */
+.store-filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-10);
+  flex-wrap: wrap;
+}
+
+.store-filter {
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  background: var(--glass-bg-deep);
+  cursor: pointer;
+  transition: all var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.store-filter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.store-filter:hover {
+  color: var(--text-primary);
+  border-color: rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(168, 85, 247, 0.1);
+}
+
+.store-filter:hover::before {
+  opacity: 1;
+}
+
+.store-filter.active {
+  background: var(--accent-gradient);
+  color: white;
+  border-color: transparent;
+  box-shadow:
+    0 4px 20px var(--accent-glow),
+    0 0 40px var(--accent-glow-pink),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.store-filter.active::before {
+  opacity: 1;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 50%);
+}
+
+/* ═══ Product Grid ═══ */
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+/* ═══ Responsive ═══ */
+@media (max-width: 900px) {
+  .store-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .store-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .store-filters {
+    gap: var(--space-1);
+  }
+
+  .store-filter {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+  }
+}

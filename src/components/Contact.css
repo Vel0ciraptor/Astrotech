@@ -1,0 +1,267 @@
+/* ═══ Contact Section ═══ */
+.contact {
+  position: relative;
+  background: var(--bg-secondary);
+  overflow: hidden;
+}
+
+.contact .section-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.contact .section-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(251, 146, 60, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 146, 60, 0.03) 1px, transparent 1px);
+  background-size: 25px 25px;
+}
+
+.contact .section-glow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.2), transparent 60%);
+  filter: blur(80px);
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: contactGlow 7s ease-in-out infinite;
+}
+
+@keyframes contactGlow {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.22; }
+}
+
+.contact-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ═══ Contact Card - Liquid Glass ═══ */
+.contact-card {
+  padding: var(--space-10);
+  background: var(--glass-bg-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  transition: all var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.3) 30%,
+    rgba(236, 72, 153, 0.4) 50%,
+    rgba(168, 85, 247, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+/* ═══ Form ═══ */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  position: relative;
+  z-index: 1;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ═══ Input - Neon Focus ═══ */
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  background: var(--glass-bg-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  outline: none;
+  transition: all var(--transition-spring);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow:
+    0 0 0 3px rgba(168, 85, 247, 0.15),
+    0 0 30px rgba(168, 85, 247, 0.1);
+  background: var(--glass-bg);
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ═══ Submit Button - Full Width Gradient ═══ */
+.contact-submit {
+  width: 100%;
+  padding: var(--space-4);
+  font-size: var(--text-base);
+  background: var(--accent-gradient);
+  color: white;
+  border-radius: 50px;
+  box-shadow:
+    0 4px 20px var(--accent-glow),
+    0 0 40px var(--accent-glow-pink),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.contact-submit:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 8px 40px var(--accent-glow-strong),
+    0 0 60px var(--accent-glow-pink),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.contact-submit:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ═══ Divider ═══ */
+.contact-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: var(--space-2) 0;
+}
+
+.contact-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--glass-border),
+    transparent
+  );
+}
+
+.contact-divider-text {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* ═══ Action Buttons ═══ */
+.contact-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.contact-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border-radius: 50px;
+  background: var(--glass-bg-deep);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-spring);
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.contact-action:hover {
+  background: rgba(168, 85, 247, 0.15);
+  color: var(--text-primary);
+  border-color: rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(168, 85, 247, 0.15);
+}
+
+.contact-action svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ═══ Success State ═══ */
+.contact-success {
+  text-align: center;
+  padding: var(--space-10);
+  animation: successEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes successEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.contact-success-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+}
+
+.contact-success h3 {
+  margin-bottom: var(--space-2);
+}
+
+.contact-success p {
+  color: var(--text-secondary);
+}
+
+/* ═══ Responsive ═══ */
+@media (max-width: 480px) {
+  .contact-card {
+    padding: var(--space-6);
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+}

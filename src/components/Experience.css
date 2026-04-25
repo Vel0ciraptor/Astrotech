@@ -1,0 +1,248 @@
+/* ═══ Experience Section ═══ */
+.experience {
+  position: relative;
+  overflow: hidden;
+}
+
+.experience .section-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.experience .section-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 60%);
+  filter: blur(90px);
+  bottom: -200px;
+  right: -100px;
+  animation: expGlow 6s ease-in-out infinite;
+}
+
+@keyframes expGlow {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.22; transform: scale(1.1); }
+}
+
+.experience .section-orb {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 1px dashed rgba(59, 130, 246, 0.2);
+  top: 20%;
+  left: 8%;
+  animation: expOrb 20s linear infinite;
+}
+
+@keyframes expOrb {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.experience-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.experience-text h2 {
+  margin-bottom: var(--space-6);
+}
+
+.experience-text p {
+  margin-bottom: var(--space-8);
+  font-size: var(--text-lg);
+}
+
+/* ═══ Features Grid ═══ */
+.experience-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* ═══ Feature Card - Small Glass ═══ */
+.experience-feature {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--glass-bg-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-spring);
+  backdrop-filter: blur(var(--glass-blur-light));
+  -webkit-backdrop-filter: blur(var(--glass-blur-light));
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-feature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+}
+
+.experience-feature:hover {
+  background: var(--glass-bg);
+  border-color: rgba(168, 85, 247, 0.2);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(168, 85, 247, 0.1);
+}
+
+.experience-feature-icon {
+  font-size: 1.5rem;
+}
+
+/* ═══ Visual / Mockup ═══ */
+.experience-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.experience-mockup {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-2xl);
+  background: var(--glass-bg-deep);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  overflow: hidden;
+  position: relative;
+  max-height: 500px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(168, 85, 247, 0.08) inset;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.experience-mockup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+.experience-mockup-inner {
+  position: absolute;
+  inset: 8px;
+  border-radius: calc(var(--radius-2xl) - 4px);
+  background: var(--bg-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.experience-mockup-bar {
+  width: 40%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--glass-border-strong);
+}
+
+.experience-mockup-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.experience-mockup-block {
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-fast);
+}
+
+.experience-mockup-block:nth-child(2) { width: 70%; }
+.experience-mockup-block:nth-child(3) { width: 85%; }
+.experience-mockup-block:nth-child(4) { width: 50%; }
+
+.experience-mockup-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  filter: blur(80px);
+  opacity: 0.2;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* ═══ Responsive ═══ */
+@media (max-width: 768px) {
+  .experience-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .experience-visual {
+    order: -1;
+  }
+
+  .experience-mockup {
+    max-width: 280px;
+    max-height: 400px;
+  }
+}
+
+/* ═══ iOS 26 Entrance ═══ */
+@keyframes experienceEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.experience-visual {
+  animation: experienceEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}

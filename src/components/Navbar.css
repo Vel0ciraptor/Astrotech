@@ -1,0 +1,463 @@
+/* ═══ Navbar - Liquid Glass Floating Navigation ═══ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  padding: var(--space-4) 0;
+  transition: all var(--transition-smooth);
+}
+
+.navbar.scrolled {
+  padding: var(--space-2) 0;
+}
+
+/* ═══ Glass Container - Floating Pill ═══ */
+.navbar-glass {
+  /* Liquid glass effect */
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3) var(--space-6);
+  margin: 0 var(--space-4);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 0 60px rgba(168, 85, 247, 0.08) inset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ═══ Top inner glow - liquid reflection ═══ */
+.navbar-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.3) 30%,
+    rgba(236, 72, 153, 0.4) 50%,
+    rgba(168, 85, 247, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+/* ═══ Scrolled state - more opaque ═══ */
+.navbar.scrolled .navbar-glass {
+  background: rgba(10, 10, 15, 0.85);
+  border-color: rgba(168, 85, 247, 0.25);
+  padding: var(--space-2) var(--space-6);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(168, 85, 247, 0.12) inset;
+}
+
+/* ═══ Logo ═══ */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.3));
+}
+
+.navbar-logo-text {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.navbar-logo-text span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══ Navigation Links ═══ */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-link {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-spring);
+  cursor: pointer;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  position: relative;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.15),
+    rgba(236, 72, 153, 0.1)
+  );
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--text-primary);
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+  opacity: 1;
+}
+
+.navbar-link.active {
+  color: var(--accent-primary);
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+/* ═══ Cart Button ═══ */
+.navbar-cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg-deep);
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: all var(--transition-spring);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-cart:hover {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: var(--text-primary);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+.navbar-cart:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.navbar-cart svg {
+  width: 20px;
+  height: 20px;
+}
+
+.navbar-cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: white;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-full);
+  padding: 0 4px;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.8);
+  }
+}
+
+/* ═══ CTA Button ═══ */
+.navbar-cta {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow:
+    0 4px 20px var(--accent-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 8px 40px var(--accent-glow-strong),
+    0 0 60px var(--accent-glow-pink),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.navbar-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ═══ Right Section ═══ */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ═══ Hamburger / Mobile Toggle ═══ */
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  z-index: var(--z-modal);
+  position: relative;
+}
+
+.navbar-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all var(--transition-spring);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.navbar-hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  background: var(--accent-primary);
+}
+
+.navbar-hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.navbar-hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+  background: var(--accent-secondary);
+}
+
+/* ═══ Mobile Menu - Fullscreen Overlay ═══ */
+.navbar-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(60px) saturate(200%);
+  -webkit-backdrop-filter: blur(60px) saturate(200%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95) translateY(-10px);
+  transition: all var(--transition-slow);
+}
+
+.navbar-mobile.open {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+}
+
+/* ═══ Mobile Glass Container ═══ */
+.navbar-mobile-container {
+  background: var(--glass-bg-deep);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 100px rgba(168, 85, 247, 0.1) inset;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ═══ Top inner glow ═══ */
+.navbar-mobile-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.4) 30%,
+    rgba(236, 72, 153, 0.5) 50%,
+    rgba(168, 85, 247, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+/* ═══ Mobile Nav Links ═══ */
+.navbar-mobile-link {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-spring);
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.navbar-mobile-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.2),
+    rgba(236, 72, 153, 0.15)
+  );
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+.navbar-mobile-link:hover,
+.navbar-mobile-link.active {
+  color: var(--text-primary);
+}
+
+.navbar-mobile-link:hover::after,
+.navbar-mobile-link.active::after {
+  opacity: 1;
+}
+
+.navbar-mobile-link.active {
+  color: var(--accent-primary);
+}
+
+/* ═══ Mobile CTA ═══ */
+.navbar-mobile-cta {
+  margin-top: var(--space-4);
+  width: 100%;
+  max-width: 280px;
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow:
+    0 4px 20px var(--accent-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-mobile-cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 8px 40px var(--accent-glow-strong),
+    0 0 60px var(--accent-glow-pink);
+}
+
+/* ═══ Responsive ═══ */
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-cta {
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+  }
+
+  .navbar-glass {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* ═══ iOS 26 Mobile Animation ═══ */
+@media (max-width: 600px) {
+  .navbar-mobile-link {
+    font-size: var(--text-xl);
+    padding: var(--space-3) var(--space-6);
+  }
+
+  .navbar-mobile-container {
+    padding: var(--space-6);
+  }
+}
+
+/* ═══ Nav entrance animation ═══ */
+@keyframes navEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: navEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
