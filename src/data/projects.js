@@ -13,7 +13,7 @@ export const projects = [
     description: 'Plataforma de catálogo y ventas para concesionaria automotriz con diseño premium y optimización móvil.',
     stack: ['React', 'Vite', 'Node.js', 'MongoDB'],
     result: '+180% conversión mobile',
-    image: 'project-ecommerce',
+    images: ['/assets/proyecto1.png'],
     color: '#a855f7',
   },
   {
@@ -23,17 +23,17 @@ export const projects = [
     description: 'Flujos automatizados de captación, seguimiento y cierre de leads con integración WhatsApp y email.',
     stack: ['n8n', 'WhatsApp API', 'Google Sheets', 'Webhook'],
     result: '-70% tiempo de gestión',
-    image: 'project-crm',
+    images: ['/assets/proyecto2.png'],
     color: '#6366f1',
   },
   {
     id: 3,
-    title: 'Agente IA Inmobiliario',
-    category: 'ai',
-    description: 'Bot inteligente para búsqueda de propiedades con filtros avanzados y atención automatizada 24/7.',
-    stack: ['OpenAI', 'Langchain', 'React', 'PostgreSQL'],
-    result: '+250% leads calificados',
-    image: 'project-ai',
+    title: 'Academia de Repostería',
+    category: 'web',
+    description: 'Plataforma educativa online con cursos en video, gestión de alumnos y pasarela de pagos integrada.',
+    stack: ['React', 'Firebase', 'Stripe', 'Tailwind'],
+    result: '+300 alumnos inscritos',
+    images: ['/assets/proyecto3.png'], // No image provided yet
     color: '#ec4899',
   },
   {
@@ -43,7 +43,7 @@ export const projects = [
     description: 'Panel de control en tiempo real para monitoreo de KPIs, automatizaciones y estado de servicios.',
     stack: ['React', 'Chart.js', 'WebSocket', 'Express'],
     result: 'Control total 24/7',
-    image: 'project-dashboard',
+    images: ['/assets/proyecto4.png'],
     color: '#06b6d4',
   },
   {
@@ -53,7 +53,7 @@ export const projects = [
     description: 'Sistema automático de generación y envío de reportes semanales a clientes con métricas clave.',
     stack: ['n8n', 'Google APIs', 'PDF Generator', 'SMTP'],
     result: '-90% tiempo en reportes',
-    image: 'project-reports',
+    images: ['/assets/proyecto5.png'],
     color: '#f59e0b',
   },
   {
@@ -63,7 +63,7 @@ export const projects = [
     description: 'Asistente virtual desplegado en WhatsApp, Web y Telegram con procesamiento de lenguaje natural.',
     stack: ['GPT-4', 'WhatsApp Cloud', 'Telegram Bot', 'Node.js'],
     result: '+400% capacidad de atención',
-    image: 'project-chatbot',
+    images: ['/assets/proyecto6.png'],
     color: '#ec4899',
   },
 ];

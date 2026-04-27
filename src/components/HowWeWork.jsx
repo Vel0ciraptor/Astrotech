@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Rocket } from 'lucide-react';
 import './HowWeWork.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -101,7 +102,9 @@ export default function HowWeWork() {
       </div>
       <div className="container">
         <div className="section-header">
-          <span className="section-label">Proceso</span>
+          <div className="section-label-wrapper">
+            <span className="section-label">Proceso</span>
+          </div>
           <h2 className="section-title">
             Cómo <span className="gradient-text">trabajamos</span>
           </h2>
@@ -110,23 +113,40 @@ export default function HowWeWork() {
           </p>
         </div>
 
-        <div className="howwework-steps">
+        <div className="howwework-content">
           <div className="howwework-line">
-            <div className="howwework-line-fill" ref={lineRef}></div>
-          </div>
-
-          {steps.map((step, i) => (
-            <div key={i} className="howwework-step">
-              <div className="howwework-step-number">
-                {step.icon}
-                <span className="howwework-step-count">{i + 1}</span>
-              </div>
-              <div>
-                <h3 className="howwework-step-title">{step.title}</h3>
-                <p className="howwework-step-desc">{step.desc}</p>
+            <div className="howwework-line-fill" ref={lineRef}>
+              <div className="howwework-line-dots">
+                <div className="line-dot dot-1"></div>
+                <div className="line-dot dot-2"></div>
+                <div className="line-dot dot-3"></div>
               </div>
             </div>
-          ))}
+          </div>
+
+          <div className="howwework-steps">
+            {steps.map((step, i) => (
+              <div key={i} className="howwework-step">
+                <div className="howwework-step-visual">
+                  <div className="howwework-step-number">
+                    {step.icon}
+                    <span className="howwework-step-count">{String(i + 1).padStart(2, '0')}</span>
+                  </div>
+                </div>
+                <div className="howwework-step-card">
+                  <h3 className="howwework-step-title">{step.title}</h3>
+                  <p className="howwework-step-desc">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="howwework-footer">
+          <div className="howwework-footer-pill">
+            <Rocket className="footer-pill-icon" size={20} />
+            <p>Transparencia, comunicación y resultados en cada paso del camino.</p>
+          </div>
         </div>
       </div>
     </section>

@@ -2,182 +2,273 @@
 .howwework {
   position: relative;
   overflow: hidden;
+  padding: var(--space-24) 0;
 }
 
 .howwework .section-bg {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  z-index: -1;
 }
 
 .howwework .section-glow {
   position: absolute;
-  width: 800px;
-  height: 800px;
+  width: 1000px;
+  height: 1000px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 60%);
-  filter: blur(80px);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15), transparent 70%);
+  filter: blur(100px);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: hwwGlow 10s ease-in-out infinite;
 }
 
-@keyframes hwwGlow {
-  0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.25; transform: translate(-50%, -50%) scale(1.15); }
-}
-
-.howwework .section-scan {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    transparent 50%,
-    rgba(99, 102, 241, 0.04) 50%
-  );
-  background-size: 100% 3px;
-  animation: scanMove 4s linear infinite;
-  opacity: 0.4;
-}
-
-.howwework-steps {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+.howwework .container {
   position: relative;
-  gap: var(--space-4);
+  z-index: 1;
+}
+
+/* ═══ Header Badge ═══ */
+.section-label-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.howwework .section-label {
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 6px 20px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c084fc;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+.howwework .section-title {
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: var(--space-4);
+}
+
+.howwework .section-subtitle {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-16);
+  color: var(--text-muted);
+}
+
+/* ═══ Timeline Content ═══ */
+.howwework-content {
+  position: relative;
+  margin-bottom: var(--space-16);
+  padding: 40px 0;
 }
 
 /* ═══ Progress Line ═══ */
 .howwework-line {
   position: absolute;
-  top: 40px;
-  left: 60px;
-  right: 60px;
+  top: 90px; /* Aligned with circle center */
+  left: 10%;
+  right: 10%;
   height: 2px;
-  background: var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
   z-index: 0;
 }
 
 .howwework-line-fill {
   height: 100%;
   width: 0%;
-  background: var(--accent-gradient-horizontal);
-  border-radius: 2px;
-  transition: width 0.5s ease;
+  background: linear-gradient(90deg, #c084fc, #e879f9);
+  position: relative;
   box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
 }
 
-/* ═══ Step - Liquid Glass Circle ═══ */
-.howwework-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex: 1;
+.howwework-line-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.line-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #e879f9;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #e879f9;
+  border: 2px solid var(--bg-primary);
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.line-dot.dot-1 { left: 25%; }
+.line-dot.dot-2 { left: 50%; }
+.line-dot.dot-3 { left: 75%; }
+
+/* ═══ Steps Grid ═══ */
+.howwework-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
   position: relative;
   z-index: 1;
 }
 
+.howwework-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ═══ Circle Visual ═══ */
+.howwework-step-visual {
+  margin-bottom: var(--space-8);
+  position: relative;
+}
+
 .howwework-step-number {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: var(--glass-bg-deep);
-  border: 2px solid var(--glass-border);
-  margin-bottom: var(--space-6);
+  background: rgba(15, 15, 25, 0.8);
+  border: 2px solid rgba(168, 85, 247, 0.4);
   position: relative;
-  transition: all var(--transition-spring);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
-}
-
-.howwework-step-number::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.15) 50%,
-    transparent 100%
-  );
-  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
 }
 
 .howwework-step.active .howwework-step-number {
-  border-color: rgba(168, 85, 247, 0.5);
-  transform: scale(1.1);
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.4),
-    0 0 50px rgba(168, 85, 247, 0.3);
+  border-color: #c084fc;
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+  transform: scale(1.05);
 }
 
 .howwework-step-number svg {
-  width: 32px;
-  height: 32px;
-  color: var(--accent-primary);
+  width: 36px;
+  height: 36px;
+  color: white;
+  stroke-width: 1.5;
 }
 
-/* ═══ Step Count Badge ═══ */
+/* ═══ Step Badge ═══ */
 .howwework-step-count {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
+  top: -5px;
+  right: -5px;
+  background: linear-gradient(135deg, #c084fc, #e879f9);
   color: white;
-  background: var(--accent-gradient);
-  border-radius: 50%;
-  box-shadow:
-    0 2px 10px var(--accent-glow),
-    0 0 20px var(--accent-glow-pink);
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 0 15px rgba(232, 121, 249, 0.5);
+  border: 2px solid var(--bg-primary);
+}
+
+/* ═══ Step Card ═══ */
+.howwework-step-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: var(--space-8) var(--space-6);
+  border-radius: 24px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.howwework-step:hover .howwework-step-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(168, 85, 247, 0.2);
+  transform: translateY(-5px);
 }
 
 .howwework-step-title {
-  font-size: var(--text-lg);
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: var(--space-2);
-  font-family: var(--font-heading);
+  margin-bottom: var(--space-3);
+  color: white;
 }
 
 .howwework-step-desc {
-  font-size: var(--text-sm);
+  font-size: 0.9rem;
   color: var(--text-muted);
-  max-width: 200px;
   line-height: 1.6;
 }
 
+/* ═══ Footer Pill ═══ */
+.howwework-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-12);
+}
+
+.howwework-footer-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 30px;
+  border-radius: 100px;
+  backdrop-filter: blur(10px);
+}
+
+.footer-pill-icon {
+  color: #c084fc;
+}
+
+.howwework-footer-pill p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
 /* ═══ Responsive ═══ */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .howwework-steps {
-    flex-direction: column;
-    align-items: center;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .howwework-content {
+    padding-left: 40px;
+  }
+
+  .howwework-steps {
+    grid-template-columns: 1fr;
     gap: var(--space-8);
+  }
+
+  .howwework-step {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-6);
+  }
+
+  .howwework-step-visual {
+    margin-bottom: 0;
+    flex-shrink: 0;
   }
 
   .howwework-line {
     top: 40px;
     bottom: 40px;
-    left: 50%;
+    left: 90px; /* Aligned with circle centers in row layout */
     right: auto;
     width: 2px;
     height: calc(100% - 80px);
-    transform: translateX(-50%);
   }
 
   .howwework-line-fill {
@@ -185,39 +276,19 @@
     height: 0%;
   }
 
-  .howwework-step {
-    flex-direction: row;
+  .howwework-line-dots {
+    flex-direction: column;
+  }
+
+  .howwework-step-card {
     text-align: left;
-    gap: var(--space-6);
+    padding: var(--space-6);
   }
 
-  .howwework-step-number {
-    margin-bottom: 0;
-    flex-shrink: 0;
-  }
-
-  .howwework-step-desc {
-    max-width: none;
+  .howwework-footer-pill {
+    flex-direction: column;
+    text-align: center;
+    border-radius: 20px;
+    padding: 20px;
   }
 }
-
-/* ═══ iOS 26 Entrance Animation ═══ */
-@keyframes stepEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.howwework-step {
-  animation: stepEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.howwework-step:nth-child(1) { animation-delay: 0s; }
-.howwework-step:nth-child(2) { animation-delay: 0.15s; }
-.howwework-step:nth-child(3) { animation-delay: 0.3s; }
-.howwework-step:nth-child(4) { animation-delay: 0.45s; }

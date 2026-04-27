@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
@@ -15,6 +16,8 @@ export default function Navbar({ onCartOpen }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
   const { totalItems } = useCart();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +28,11 @@ export default function Navbar({ onCartOpen }) {
   }, []);
 
   useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -42,10 +50,16 @@ export default function Navbar({ onCartOpen }) {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [location.pathname]);
 
   const scrollTo = (id) => {
     setMobileOpen(false);
+    
+    if (location.pathname !== '/') {
+      navigate(`/#${id}`);
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -64,7 +78,7 @@ export default function Navbar({ onCartOpen }) {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="navbar-glass">
-        <a href="#" className="navbar-logo" onClick={(e) => { e.preventDefault(); scrollTo('inicio'); }}>
+        <a href="/" className="navbar-logo" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
           <img src="/logo.png" alt="Astrotech" className="navbar-logo-img" />
           <span className="navbar-logo-text">
             ASTRO<span>TECH</span>

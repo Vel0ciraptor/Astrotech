@@ -73,9 +73,18 @@ export default function Projects() {
               <div
                 className="project-card-bg"
                 style={{
-                  background: `radial-gradient(circle at 30% 30%, ${project.color}40, transparent 60%)`,
+                  background: project.images && project.images.length > 0 
+                    ? `url(${project.images[0]}) center/cover no-repeat`
+                    : `radial-gradient(circle at 30% 30%, ${project.color}40, transparent 60%)`,
                 }}
-              ></div>
+              >
+                {project.images && project.images.length > 0 && (
+                  <div 
+                    className="project-card-glow" 
+                    style={{ background: `radial-gradient(circle at 30% 30%, ${project.color}60, transparent 70%)` }} 
+                  />
+                )}
+              </div>
               <div className="project-card-overlay"></div>
               <div className="project-card-content">
                 <span className="project-card-category" style={{ color: project.color, borderColor: `${project.color}30` }}>

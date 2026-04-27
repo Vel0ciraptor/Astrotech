@@ -4,7 +4,8 @@ import { useAdmin } from '../context/AdminContext';
 import Navbar from '../components/Navbar';
 import Cart from '../components/Cart';
 import Footer from '../components/Footer';
-import { ArrowLeft, MessageCircle, ChevronRight, CheckCircle2 } from 'lucide-react';
+import ImageModal from '../components/ImageModal';
+import { ArrowLeft, MessageCircle, ChevronRight, CheckCircle2, Maximize2 } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import './ServiceDetail.css';
 
@@ -20,6 +21,8 @@ export default function ServiceDetail() {
   const navigate = useNavigate();
   const { services } = useAdmin();
   const [cartOpen, setCartOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImg, setSelectedImg] = useState('');
 
   const service = services.find(s => s.id === id);
   const otherServices = services.filter(s => s.id !== id);
@@ -59,10 +62,16 @@ export default function ServiceDetail() {
     window.open(`https://wa.me/59176382164?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
+  const openLightbox = (src) => {
+    setSelectedImg(src);
+    setModalOpen(true);
+  };
+
   return (
     <div className="sd-page">
       <Navbar onCartOpen={() => setCartOpen(true)} />
       <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+      <ImageModal src={selectedImg} isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
       <section className="sd-hero">
         <div className="sd-blob sd-blob-1" style={{ background: `radial-gradient(circle, ${c}, transparent 70%)` }} />
@@ -111,8 +120,11 @@ export default function ServiceDetail() {
 
             <div className="sd-hero-visual">
               {service.image ? (
-                <div className="sd-visual-image">
+                <div className="sd-visual-image" onClick={() => openLightbox(service.image)} style={{ cursor: 'zoom-in' }}>
                   <img src={service.image} alt={service.title} />
+                  <div className="sd-visual-zoom-hint">
+                    <Maximize2 size={24} />
+                  </div>
                 </div>
               ) : (
                 <>

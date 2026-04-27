@@ -283,14 +283,37 @@
 }
 
 .sd-visual-image {
-  width: 100%;
-  max-width: 500px;
-  height: 320px;
+  position: relative;
   border-radius: 24px;
   overflow: hidden;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: zoom-in;
+}
+
+.sd-visual-zoom-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.4);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sd-visual-image:hover .sd-visual-zoom-hint {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .sd-visual-image img {
