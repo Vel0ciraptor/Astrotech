@@ -180,7 +180,7 @@
   inset: 0;
   transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), opacity var(--transition-base);
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.08;
 }
 
 .project-card-glow {
@@ -192,16 +192,15 @@
 }
 
 .project-card:hover .project-card-bg {
-  opacity: 0.7;
-  transform: scale(1.1);
+  opacity: 0.2;
 }
 
 /* ═══ Hover Overlay ═══ */
 .project-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 15, 25, 0.2) 0%, rgba(10, 15, 25, 0.95) 100%);
-  opacity: 0.8;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  opacity: 0;
   transition: opacity var(--transition-base);
   z-index: 0;
 }

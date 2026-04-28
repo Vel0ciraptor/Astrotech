@@ -7,12 +7,18 @@ import Navbar from '../components/Navbar';
 import Cart from '../components/Cart';
 import Footer from '../components/Footer';
 import ImageModal from '../components/ImageModal';
-import {
-  ArrowLeft, Globe, Cpu, Bot,
-  CheckCircle2, ChevronRight, ChevronLeft,
-  TrendingUp, MessageCircle, Image as ImageIcon,
-  Maximize2
-} from 'lucide-react';
+import { Icons } from '../components/Icons';
+const ArrowLeft = Icons.ArrowLeft;
+const Globe = Icons.Globe;
+const Cpu = Icons.Cpu;
+const Bot = Icons.Bot;
+const CheckCircle2 = Icons.Check;
+const ChevronLeft = Icons.ArrowLeft;
+const ChevronRight = (props) => <div style={{transform: 'rotate(180deg)', display: 'inline-flex', alignItems: 'center'}}><Icons.ArrowLeft {...props} /></div>;
+const TrendingUp = Icons.LineChart;
+const MessageCircle = Icons.Mail;
+const ImageIcon = Icons.Gem;
+const Maximize2 = Icons.Plus;
 import './ProjectDetail.css';
 
 function ImageCarousel({ images, color, onImageClick }) {

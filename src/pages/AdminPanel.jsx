@@ -1,11 +1,20 @@
 import { useState } from 'react';
 import { useAdmin } from '../context/AdminContext';
-import {
-  Plus, Trash2, Edit2, LogOut,
-  LayoutDashboard, Briefcase, ShoppingBag,
-  FolderKanban, Image as ImageIcon, Save, X,
-  Workflow, Globe, Bot
-} from 'lucide-react';
+import { Icons } from '../components/Icons';
+const Plus = Icons.Plus;
+const Trash2 = Icons.X;
+const Edit2 = Icons.Settings;
+const LogOut = Icons.ArrowLeft;
+const LayoutDashboard = Icons.LayoutDashboard;
+const Briefcase = Icons.Briefcase;
+const ShoppingBag = Icons.Briefcase;
+const FolderKanban = Icons.Workflow;
+const ImageIcon = Icons.Gem;
+const Save = Icons.Check;
+const X = Icons.X;
+const Workflow = Icons.Workflow;
+const Globe = Icons.Globe;
+const Bot = Icons.Bot;
 import { useNavigate } from 'react-router-dom';
 import './AdminPanel.css';
 

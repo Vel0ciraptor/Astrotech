@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Globe, Mail, Code2, Users, Cpu } from 'lucide-react';
+import { Icons } from './Icons';
 import './Team.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,19 +11,19 @@ const team = [
   {
     name: 'Ing. Rodrigo R',
     role: 'Project Manager',
-    icon: <Users size={32} />,
+    icon: <Icons.Users size={32} />,
     color: '#3b82f6', // Blue
   },
   {
     name: 'Ing. Oscar Z',
     role: 'Developer',
-    icon: <Code2 size={32} />,
+    icon: <Icons.Code2 size={32} />,
     color: '#a855f7', // Purple
   },
   {
     name: 'Ing. Luis L',
     role: 'Developer',
-    icon: <Cpu size={32} />,
+    icon: <Icons.Cpu size={32} />,
     color: '#ec4899', // Pink
   }
 ];
@@ -88,10 +88,10 @@ export default function Team() {
                 <p className="team-desc">Especialista en desarrollo e innovación tecnológica.</p>
                 <div className="team-social">
                   <button className="team-social-btn" aria-label="Perfil">
-                    <Globe size={18} />
+                    <Icons.Globe size={18} />
                   </button>
                   <button className="team-social-btn" aria-label="Email">
-                    <Mail size={18} />
+                    <Icons.Mail size={18} />
                   </button>
                 </div>
               </div>

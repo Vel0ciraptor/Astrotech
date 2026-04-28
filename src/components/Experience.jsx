@@ -1,13 +1,13 @@
 import GlassCard from './GlassCard';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Smartphone, Diamond, Sparkles, MousePointer2 } from 'lucide-react';
+import { Icons } from './Icons';
 import './Experience.css';
 
 const features = [
-  { icon: <Smartphone />, title: 'Mobile-First', desc: 'Diseñado primero para móvil, perfecto en todos los dispositivos.' },
-  { icon: <Diamond />, title: 'Liquid Glass UI', desc: 'Interfaces con efecto glass premium y moderno.' },
-  { icon: <Sparkles />, title: 'Animaciones Fluidas', desc: 'Micro-interacciones que mejoran la experiencia.' },
-  { icon: <MousePointer2 />, title: 'UX sin Fricción', desc: 'Navegación intuitiva, conversión optimizada.' },
+  { icon: <Icons.Smartphone />, title: 'Mobile-First', desc: 'Diseñado primero para móvil, perfecto en todos los dispositivos.' },
+  { icon: <Icons.Gem />, title: 'Liquid Glass UI', desc: 'Interfaces con efecto glass premium y moderno.' },
+  { icon: <Icons.Zap />, title: 'Animaciones Fluidas', desc: 'Micro-interacciones que mejoran la experiencia.' },
+  { icon: <Icons.Workflow />, title: 'UX sin Fricción', desc: 'Navegación intuitiva, conversión optimizada.' },
 ];
 
 export default function Experience() {

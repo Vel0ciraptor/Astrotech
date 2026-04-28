@@ -5,10 +5,19 @@ import Navbar from '../components/Navbar';
 import Cart from '../components/Cart';
 import Footer from '../components/Footer';
 import ImageModal from '../components/ImageModal';
-import { 
-  ArrowLeft, MessageCircle, ChevronRight, CheckCircle2, Maximize2,
-  Workflow, LayoutDashboard, Bot, Briefcase, Settings, Cpu, LineChart
-} from 'lucide-react';
+import { Icons } from '../components/Icons';
+const ArrowLeft = Icons.ArrowLeft;
+const MessageCircle = Icons.Mail;
+const ChevronRight = (props) => <div style={{transform: 'rotate(180deg)', display: 'inline-flex', alignItems: 'center'}}><Icons.ArrowLeft {...props} /></div>;
+const CheckCircle2 = Icons.Check;
+const Maximize2 = Icons.Plus;
+const Workflow = Icons.Workflow;
+const LayoutDashboard = Icons.LayoutDashboard;
+const Bot = Icons.Bot;
+const Briefcase = Icons.Briefcase;
+const Settings = Icons.Settings;
+const Cpu = Icons.Cpu;
+const LineChart = Icons.LineChart;
 import './ServiceDetail.css';
 
 // Manual map for dynamic service icons to avoid importing the whole library

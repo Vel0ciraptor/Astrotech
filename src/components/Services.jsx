@@ -1,8 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useAdmin } from '../context/AdminContext';
-import * as LucideIcons from 'lucide-react';
+import { Icons } from './Icons';
 import './Services.css';
+
+// Manual map for dynamic service icons
+const IconMap = {
+  Workflow: Icons.Workflow,
+  LayoutDashboard: Icons.LayoutDashboard,
+  Bot: Icons.Bot,
+  Briefcase: Icons.Briefcase,
+  Settings: Icons.Settings,
+  Cpu: Icons.Cpu,
+  LineChart: Icons.LineChart
+};
 
 export default function Services() {
   const { services } = useAdmin();
@@ -30,7 +41,7 @@ export default function Services() {
 
         <div className="services-grid">
           {services.map((service, i) => {
-            const IconComponent = LucideIcons[service.iconName] || LucideIcons.Briefcase;
+            const IconComponent = IconMap[service.iconName] || Icons.Briefcase;
 
             return (
               <div

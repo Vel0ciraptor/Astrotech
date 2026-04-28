@@ -5,7 +5,14 @@ import { useAdmin } from '../context/AdminContext';
 import Navbar from '../components/Navbar';
 import Cart from '../components/Cart';
 import Footer from '../components/Footer';
-import { ArrowLeft, CheckCircle2, Star, Settings, Bot, Globe, ShoppingCart } from 'lucide-react';
+import { Icons } from '../components/Icons';
+const ArrowLeft = Icons.ArrowLeft;
+const CheckCircle2 = Icons.Check;
+const Star = Icons.Zap;
+const Settings = Icons.Settings;
+const Bot = Icons.Bot;
+const Globe = Icons.Globe;
+const ShoppingCart = Icons.Briefcase;
 import './ProductDetail.css';
 
 const categoryIcons = {

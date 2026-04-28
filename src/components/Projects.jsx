@@ -4,7 +4,7 @@ import GlassCard from './GlassCard';
 import { projectCategories } from '../data/projects';
 import { useAdmin } from '../context/AdminContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Globe, Cpu, Bot } from 'lucide-react';
+import { Icons } from './Icons';
 import './Projects.css';
 
 export default function Projects() {
@@ -18,9 +18,9 @@ export default function Projects() {
     : projects.filter(p => p.category === activeFilter);
 
   const getCategoryIcon = (cat) => {
-    if (cat === 'web') return <Globe size={14} className="mr-1 inline-block" />;
-    if (cat === 'automation') return <Cpu size={14} className="mr-1 inline-block" />;
-    if (cat === 'ai') return <Bot size={14} className="mr-1 inline-block" />;
+    if (cat === 'web') return <span className="mr-1 inline-block"><Icons.Globe size={14} /></span>;
+    if (cat === 'automation') return <span className="mr-1 inline-block"><Icons.Cpu size={14} /></span>;
+    if (cat === 'ai') return <span className="mr-1 inline-block"><Icons.Bot size={14} /></span>;
     return null;
   };
 

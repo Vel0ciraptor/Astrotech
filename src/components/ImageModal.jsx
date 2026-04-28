@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { X, ZoomIn } from 'lucide-react';
+import { Icons } from './Icons';
 import './ImageModal.css';
 
 export default function ImageModal({ src, isOpen, onClose }) {
@@ -24,13 +24,13 @@ export default function ImageModal({ src, isOpen, onClose }) {
     <div className="im-overlay" onClick={onClose}>
       <div className="im-container" onClick={(e) => e.stopPropagation()}>
         <button className="im-close" onClick={onClose} aria-label="Cerrar">
-          <X size={24} />
+          <Icons.X size={24} />
         </button>
         <div className="im-content">
           <img src={src} alt="Vista ampliada" className="im-image" />
         </div>
         <div className="im-hint">
-          <ZoomIn size={14} /> Haz clic fuera para cerrar
+          <Icons.Plus size={14} /> Haz clic fuera para cerrar
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { useRef, useMemo, useState, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { Globe, Cpu, Bot } from 'lucide-react';
+
 import './Hero.css';
 
 export default function Hero() {

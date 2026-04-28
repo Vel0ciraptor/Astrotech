@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import * as LucideIcons from 'lucide-react';
+import { Icons } from './Icons';
 import './ProductCard.css';
 
 const iconMap = {
-  automation: LucideIcons.Settings,
-  dashboard: LucideIcons.LayoutDashboard,
-  'ai-agent': LucideIcons.Bot,
-  web: LucideIcons.Globe,
-  pack: LucideIcons.Package,
+  automation: Icons.Settings,
+  dashboard: Icons.LayoutDashboard,
+  'ai-agent': Icons.Bot,
+  web: Icons.Globe,
+  pack: Icons.Briefcase,
 };
 
 const categoryLabels = {
@@ -29,7 +29,7 @@ export default function ProductCard({ product }) {
     setTimeout(() => setAdded(false), 1500);
   };
 
-  const IconComponent = iconMap[product.icon] || LucideIcons.Box;
+  const IconComponent = iconMap[product.icon] || Icons.Briefcase;
 
   return (
     <div className="product-card reveal-item">
@@ -76,12 +76,12 @@ export default function ProductCard({ product }) {
           >
             {added ? (
               <>
-                <LucideIcons.Check size={16} />
+                <Icons.Check size={16} />
                 Agregado
               </>
             ) : (
               <>
-                <LucideIcons.Plus size={16} />
+                <Icons.Plus size={16} />
                 Agregar
               </>
             )}

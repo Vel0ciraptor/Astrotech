@@ -1,29 +1,29 @@
 import GlassCard from './GlassCard';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Zap, Settings2, LineChart, Gem } from 'lucide-react';
+import { Icons } from './Icons';
 import './Benefits.css';
 
 const benefits = [
   {
-    icon: <Zap size={32} className="text-[var(--accent-primary)]" />,
+    icon: <Icons.Zap size={32} className="text-[var(--accent-primary)]" />,
     title: 'Velocidad',
     desc: 'Sitios optimizados que cargan en menos de 2 segundos.',
     stat: '<2s',
   },
   {
-    icon: <Settings2 size={32} className="text-[var(--accent-primary)]" />,
+    icon: <Icons.Settings size={32} className="text-[var(--accent-primary)]" />,
     title: 'Automatización',
     desc: 'Procesos que se ejecutan solos, sin intervención manual.',
     stat: '24/7',
   },
   {
-    icon: <LineChart size={32} className="text-[var(--accent-primary)]" />,
+    icon: <Icons.LineChart size={32} className="text-[var(--accent-primary)]" />,
     title: 'Escalabilidad',
     desc: 'Arquitectura preparada para crecer sin límites.',
     stat: '∞',
   },
   {
-    icon: <Gem size={32} className="text-[var(--accent-primary)]" />,
+    icon: <Icons.Gem size={32} className="text-[var(--accent-primary)]" />,
     title: 'Diseño Moderno',
     desc: 'Interfaces premium que destacan y convierten.',
     stat: 'A+',

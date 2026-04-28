@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Rocket } from 'lucide-react';
+import { Icons } from './Icons';
 import './HowWeWork.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -144,7 +144,7 @@ export default function HowWeWork() {
 
         <div className="howwework-footer">
           <div className="howwework-footer-pill">
-            <Rocket className="footer-pill-icon" size={20} />
+            <Icons.Rocket size={20} />
             <p>Transparencia, comunicación y resultados en cada paso del camino.</p>
           </div>
         </div>
