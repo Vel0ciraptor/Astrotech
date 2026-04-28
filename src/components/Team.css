@@ -210,3 +210,29 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   border-color: transparent;
 }
+
+/* ═══ Performance Optimization for Mobile ═══ */
+@media (max-width: 768px) {
+  .team-card {
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    padding: var(--space-6);
+  }
+
+  .team-glow {
+    filter: blur(60px);
+    opacity: 0.1;
+    width: 300px;
+    height: 300px;
+  }
+
+  .team-avatar-ring {
+    width: 90px;
+    height: 90px;
+  }
+
+  .team-avatar {
+    width: 70px;
+    height: 70px;
+  }
+}

@@ -491,6 +491,13 @@
   .hero-scroll {
     display: none;
   }
+
+  .hero-glow {
+    width: 300px;
+    height: 300px;
+    filter: blur(80px);
+    opacity: 0.1;
+  }
 }
 
 @media (max-width: 480px) {

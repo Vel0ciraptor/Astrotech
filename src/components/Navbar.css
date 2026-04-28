@@ -446,6 +446,18 @@
 
   .navbar-glass {
     padding: var(--space-3) var(--space-4);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+  }
+
+  .navbar-glass::after {
+    opacity: 0.3;
+    filter: blur(30px);
+  }
+
+  .navbar-mobile {
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
   }
 }
 

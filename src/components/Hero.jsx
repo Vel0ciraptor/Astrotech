@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Globe, Cpu, Bot } from 'lucide-react';
@@ -8,15 +8,14 @@ export default function Hero() {
   const heroRef = useRef(null);
   const blobRef = useRef(null);
   const floatsRef = useRef([]);
-  const [isDesktop, setIsDesktop] = useState(typeof window !== 'undefined' ? window.innerWidth >= 768 : true);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   // Handle resize for video rendering
-  useMemo(() => {
-    if (typeof window !== 'undefined') {
-      const handleResize = () => setIsDesktop(window.innerWidth >= 768);
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    handleResize(); // Check on mount
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Generate particles
