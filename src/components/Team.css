@@ -1,0 +1,212 @@
+/* ═══ Team Section ═══ */
+.team {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.team .section-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Blurred Lights Background */
+.team-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  mix-blend-mode: plus-lighter;
+  animation: floatLight 10s ease-in-out infinite alternate;
+}
+
+.team-glow-1 {
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, #3b82f6, transparent 60%);
+  animation-delay: 0s;
+}
+
+.team-glow-2 {
+  bottom: -10%;
+  right: -10%;
+  background: radial-gradient(circle, #ec4899, transparent 60%);
+  animation-delay: -3s;
+}
+
+.team-glow-3 {
+  top: 40%;
+  left: 40%;
+  background: radial-gradient(circle, #a855f7, transparent 60%);
+  animation-delay: -6s;
+}
+
+@keyframes floatLight {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(50px, -50px) scale(1.1); }
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══ Liquid Glass Card ═══ */
+.team-card {
+  position: relative;
+  background: rgba(15, 15, 25, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  padding: var(--space-8);
+  text-align: center;
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+/* Inner highlight for glass effect */
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.team-card-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.team-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.team-card:hover .team-card-bg {
+  opacity: 0.9;
+}
+
+.team-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+/* ═══ Avatar ═══ */
+.team-avatar-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 1px dashed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-6);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.5s ease;
+}
+
+.team-card:hover .team-avatar-ring {
+  transform: scale(1.05) rotate(45deg);
+  border-style: solid;
+}
+
+.team-avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.team-card:hover .team-avatar {
+  transform: rotate(-45deg) scale(1.1);
+}
+
+/* ═══ Typography ═══ */
+.team-name {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+  transition: color 0.3s ease;
+}
+
+.team-role {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+
+.team-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+  line-height: 1.6;
+}
+
+/* ═══ Social Buttons ═══ */
+.team-social {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: auto;
+}
+
+.team-social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--glass-bg-deep);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.team-social-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: transparent;
+}

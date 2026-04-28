@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Globe, Cpu, Bot } from 'lucide-react';
@@ -8,6 +8,16 @@ export default function Hero() {
   const heroRef = useRef(null);
   const blobRef = useRef(null);
   const floatsRef = useRef([]);
+  const [isDesktop, setIsDesktop] = useState(typeof window !== 'undefined' ? window.innerWidth >= 768 : true);
+
+  // Handle resize for video rendering
+  useMemo(() => {
+    if (typeof window !== 'undefined') {
+      const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   // Generate particles
   const particles = useMemo(() => {
@@ -93,17 +103,20 @@ export default function Hero() {
         <div className="hero-glow hero-glow-2"></div>
       </div>
 
-      {/* Video background */}
+      {/* Video background - Only loaded on desktop to save bandwidth and FCP time */}
       <div className="hero-video-container">
-        <video
-          className="hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/assets/Bubble_changes_shapes_202604222043.webm" type="video/webm" />
-        </video>
+        {isDesktop && (
+          <video
+            className="hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/assets/Liquid_glass_background_202604222022.webp"
+          >
+            <source src="/assets/Bubble_changes_shapes_202604222043.webm" type="video/webm" />
+          </video>
+        )}
       </div>
 
       {/* Particles */}

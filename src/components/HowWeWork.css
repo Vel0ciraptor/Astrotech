@@ -262,10 +262,27 @@
     flex-shrink: 0;
   }
 
+  .howwework-step-number {
+    width: 70px;
+    height: 70px;
+  }
+
+  .howwework-step-number svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .howwework-step-count {
+    padding: 2px 6px;
+    font-size: 10px;
+    top: -2px;
+    right: -2px;
+  }
+
   .howwework-line {
     top: 40px;
     bottom: 40px;
-    left: 90px; /* Aligned with circle centers in row layout */
+    left: 75px; /* Aligned with center of 70px circle + 40px padding */
     right: auto;
     width: 2px;
     height: calc(100% - 80px);

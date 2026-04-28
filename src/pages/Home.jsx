@@ -11,6 +11,7 @@ import CTAFinal from '../components/CTAFinal';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Cart from '../components/Cart';
+import Team from '../components/Team';
 
 export default function Home() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -27,6 +28,7 @@ export default function Home() {
         <Store />
         <Benefits />
         <Experience />
+        <Team />
         <CTAFinal />
         <Contact />
       </main>
