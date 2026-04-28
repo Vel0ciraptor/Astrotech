@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { products as initialProducts } from '../data/products';
 import { projects as initialProjects } from '../data/projects';
 
-const DATA_VERSION = 'v5'; // bump this to reset localStorage on breaking changes
+const DATA_VERSION = 'v6'; // bump this to reset localStorage on breaking changes
 
 const AdminContext = createContext();
 

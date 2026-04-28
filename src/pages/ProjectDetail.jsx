@@ -114,7 +114,7 @@ export default function ProjectDetail() {
       images = [project.image];
     }
     // Ensure all paths start with / if they don't have http
-    images = images.map(img => (img.startsWith('/') || img.startsWith('http')) ? img : `/assets/${img}.png`);
+    images = images.map(img => (img.startsWith('/') || img.startsWith('http')) ? img : `/assets/${img}.webp`);
   }
 
   useGSAP(() => {
