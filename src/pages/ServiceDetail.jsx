@@ -5,9 +5,22 @@ import Navbar from '../components/Navbar';
 import Cart from '../components/Cart';
 import Footer from '../components/Footer';
 import ImageModal from '../components/ImageModal';
-import { ArrowLeft, MessageCircle, ChevronRight, CheckCircle2, Maximize2 } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import { 
+  ArrowLeft, MessageCircle, ChevronRight, CheckCircle2, Maximize2,
+  Workflow, LayoutDashboard, Bot, Briefcase, Settings, Cpu, LineChart
+} from 'lucide-react';
 import './ServiceDetail.css';
+
+// Manual map for dynamic service icons to avoid importing the whole library
+const IconMap = {
+  Workflow,
+  LayoutDashboard,
+  Bot,
+  Briefcase,
+  Settings,
+  Cpu,
+  LineChart
+};
 
 const processSteps = [
   { label: 'Análisis', desc: 'Evaluamos tus necesidades específicas y definimos el alcance.' },
@@ -54,7 +67,7 @@ export default function ServiceDetail() {
     );
   }
 
-  const IconComponent = LucideIcons[service.iconName] || LucideIcons.Briefcase;
+  const IconComponent = IconMap[service.iconName] || Briefcase;
   const c = service.color || '#a855f7';
 
   const handleWhatsApp = () => {
@@ -206,7 +219,7 @@ export default function ServiceDetail() {
             <p className="sd-section-label">Más servicios</p>
             <div className="sd-others-grid">
               {otherServices.map(s => {
-                const Ic = LucideIcons[s.iconName] || LucideIcons.Briefcase;
+                const Ic = IconMap[s.iconName] || Briefcase;
                 return (
                   <button
                     key={s.id}

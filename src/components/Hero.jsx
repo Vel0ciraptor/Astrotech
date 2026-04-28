@@ -8,14 +8,14 @@ export default function Hero() {
   const heroRef = useRef(null);
   const blobRef = useRef(null);
   const floatsRef = useRef([]);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [loadVideo, setLoadVideo] = useState(false);
 
-  // Handle resize for video rendering
+  // Delay video loading to improve initial performance (LCP/FCP)
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
-    handleResize(); // Check on mount
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const timer = setTimeout(() => {
+      setLoadVideo(true);
+    }, 3500); // 3.5s delay to ensure it's the last thing
+    return () => clearTimeout(timer);
   }, []);
 
   // Generate particles
@@ -102,9 +102,9 @@ export default function Hero() {
         <div className="hero-glow hero-glow-2"></div>
       </div>
 
-      {/* Video background - Only loaded on desktop to save bandwidth and FCP time */}
+      {/* Video background - Delayed load to prioritize critical content */}
       <div className="hero-video-container">
-        {isDesktop && (
+        {loadVideo && (
           <video
             className="hero-video"
             autoPlay

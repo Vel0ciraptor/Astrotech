@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import { CartProvider } from './context/CartContext';
 import { AdminProvider } from './context/AdminContext';
+
+// Eager load Home for better LCP
 import Home from './pages/Home';
-import ProductDetail from './pages/ProductDetail';
-import ServiceDetail from './pages/ServiceDetail';
-import ProjectDetail from './pages/ProjectDetail';
-import AdminPanel from './pages/AdminPanel';
+
+// Lazy load other pages to reduce initial bundle size
+const ProductDetail = lazy(() => import('./pages/ProductDetail'));
+const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
+const AdminPanel = lazy(() => import('./pages/AdminPanel'));
 
 function ScrollHandler() {
   const { pathname, hash } = useLocation();
@@ -26,19 +30,37 @@ function ScrollHandler() {
   return null;
 }
 
+// Loading fallback component
+function PageLoader() {
+  return (
+    <div style={{ 
+      minHeight: '100vh', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      background: '#0a0f19',
+      color: '#a855f7'
+    }}>
+      <div className="loader">Cargando...</div>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <AdminProvider>
       <CartProvider>
         <BrowserRouter>
           <ScrollHandler />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:productId" element={<ProductDetail />} />
-            <Route path="/servicio/:id" element={<ServiceDetail />} />
-            <Route path="/proyecto/:id" element={<ProjectDetail />} />
-            <Route path="/admin" element={<AdminPanel />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/product/:productId" element={<ProductDetail />} />
+              <Route path="/servicio/:id" element={<ServiceDetail />} />
+              <Route path="/proyecto/:id" element={<ProjectDetail />} />
+              <Route path="/admin" element={<AdminPanel />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </CartProvider>
     </AdminProvider>
